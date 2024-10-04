@@ -8,9 +8,8 @@ const Stack = createStackNavigator();
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator>
+      <Stack.Navigator initialRouteName="Register" screenOptions={{headerShown: false}}>
         <Stack.Screen name="Register" component={SignUpPage} />
-        {/* Add more screens as needed */}
       </Stack.Navigator>
     </NavigationContainer>
   );
