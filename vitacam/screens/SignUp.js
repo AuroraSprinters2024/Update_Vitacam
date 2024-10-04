@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image } from 'react-native';
 
+
 export default function LoginPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -145,13 +146,13 @@ export default function LoginPage() {
 
       <View style={styles.socialContainer}>
         <TouchableOpacity>
-          <Image source={require('./assets/facebook.png')} style={styles.socialIcon} />
+          <Image source={require('../assets/facebook.png')} style={styles.socialIcon} />
         </TouchableOpacity>
         <TouchableOpacity>
-          <Image source={require('./assets/apple.png')} style={styles.socialIcon} />
+          <Image source={require('../assets/apple.png')} style={styles.socialIcon} />
         </TouchableOpacity>
         <TouchableOpacity>
-          <Image source={require('./assets/google.png')} style={styles.socialIcon} />
+          <Image source={require('../assets/google.webp')} style={styles.socialIcon} />
         </TouchableOpacity>
       </View>
     </View>
