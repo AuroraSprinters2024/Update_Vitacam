@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, CheckBox } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, StyleSheet} from 'react-native';
+import CheckBox from '@react-native-community/checkbox';
 
 export default function SignUpScreen({ navigation }) {
   const [name, setName] = useState('');
