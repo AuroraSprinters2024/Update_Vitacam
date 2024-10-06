@@ -1,11 +1,15 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image } from 'react-native';
-
+import { useNavigation } from '@react-navigation/native';
 
 export default function LoginPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [hidePassword, setHidePassword] = useState(true);
+
+  // Access the navigation object from React Navigation
+  const navigation = useNavigation();
+
   const styles = StyleSheet.create({
     container: {
       flex: 1,
@@ -96,7 +100,6 @@ export default function LoginPage() {
       height: 50,
     },
   });
-  
 
   return (
     <View style={styles.container}>
@@ -129,7 +132,7 @@ export default function LoginPage() {
         <Text style={styles.forgotPasswordText}>Forgot Password?</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity style={styles.loginButton}>
+      <TouchableOpacity style={styles.loginButton} onPress={() => navigation.navigate('hometreatment')}>
         <Text style={styles.loginButtonText}>Login</Text>
       </TouchableOpacity>
 
