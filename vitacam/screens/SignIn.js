@@ -135,7 +135,7 @@ export default function LoginPage() {
 
       <View style={styles.orContainer}>
         <Text style={styles.signupText}>
-          Don’t have an account? <Text style={styles.signupLink} onPress={() => navigation.navigate('Rgister')}>Sign Up</Text>
+          Don’t have an account? <Text style={styles.signupLink} onPress={() => navigation.navigate('Register')}>Sign Up</Text>
         </Text>
         <View style={styles.orDivider}>
           <View style={styles.line} />
