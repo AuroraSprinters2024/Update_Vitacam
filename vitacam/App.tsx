@@ -8,6 +8,8 @@ import Home from "./screens/Home";
 import Profile from "./screens/Profile.js";
 import LandingPage from './screens/Landing';
 import HomeTreatmentScreen from './screens/Hometreatments';
+import PhotoUploadPage from './screens/PhotoUpload';
+import PreQuestionsPage from './screens/Prequestions'
 
 
 const Stack = createStackNavigator();
@@ -26,7 +28,8 @@ export default function App() {
         <Stack.Screen name="Profile" component={Profile} />
          <Stack.Screen name="landing" component={LandingPage}/>
         <Stack.Screen name= "hometreatment" component={HomeTreatmentScreen}/>
-
+        <Stack.Screen name="prequestions" component={PreQuestionsPage}/>
+        <Stack.Screen name='photoUpload' component={PhotoUploadPage}/>
       </Stack.Navigator>
     </NavigationContainer>
   );
