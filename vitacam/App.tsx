@@ -5,6 +5,7 @@ import SignUpPage from './screens/SignUp';
 import SignInPage from './screens/SignIn';
 import LandingPage from './screens/Landing';
 import HomeTreatmentScreen from './screens/Hometreatments';
+import PhotoUploadPage from './screens/PhotoUpload';
 
 const Stack = createStackNavigator();
 
@@ -16,6 +17,7 @@ export default function App() {
         <Stack.Screen name="Login" component={SignInPage} />
         <Stack.Screen name="landing" component={LandingPage}/>
         <Stack.Screen name= "hometreatment" component={HomeTreatmentScreen}/>
+        <Stack.Screen name='photoUpload' component={PhotoUploadPage}/>
       </Stack.Navigator>
     </NavigationContainer>
   );
