@@ -1,8 +1,31 @@
 import React, { useState } from 'react';
+import { View, Text, Button, Image, StyleSheet } from 'react-native';
+import * as ImagePicker from 'expo-image-picker';
 
 const PhotoUploadPage = () => {
-  // State to manage the display of vitamin status and buttons
+  const [image, setImage] = useState(null);
   const [isDoneClicked, setIsDoneClicked] = useState(false);
+
+  // Function to handle image picking
+  const pickImage = async () => {
+    // Request permission to access the camera roll
+    let permissionResult = await ImagePicker.requestMediaLibraryPermissionsAsync();
+
+    if (permissionResult.granted === false) {
+      alert('Permission to access camera roll is required!');
+      return;
+    }
+
+    let result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.Images,
+      allowsEditing: true,
+      quality: 1,
+    });
+
+    if (!result.canceled) {
+      setImage(result.uri);
+    }
+  };
 
   // Function to handle the "Done" button click
   const handleDoneClick = () => {
@@ -10,46 +33,74 @@ const PhotoUploadPage = () => {
   };
 
   return (
-    <div className="upload-photo-page">
-      <div className="photo-section">
-        <h2>Upload Photo</h2>
-        <img 
-          src="your-image-url-here" 
-          alt="Skin Condition"
-          style={{ borderRadius: '10px', width: '100%', height: 'auto' }}
-        />
-      </div>
-      <div className="button-section">
-        <button className="cancel-btn">Cancel</button>
-        <button className="done-btn" onClick={handleDoneClick}>Done</button>
-      </div>
+    <View style={styles.container}>
+      <Text style={styles.title}>Upload Photo</Text>
 
-      {/* Vitamin Status Section - display based on state */}
+      {image && <Image source={{ uri: image }} style={styles.image} />}
+
+      <Button title="Choose Image" onPress={pickImage} />
+
+      <View style={styles.buttonSection}>
+        <Button title="Cancel" onPress={() => setImage(null)} />
+        <Button title="Done" onPress={handleDoneClick} />
+      </View>
+
+      {/* Vitamin Status Section */}
       {isDoneClicked && (
-        <div className="vitamin-status">
-          <h3>Vitamin Status</h3>
-          <p>
+        <View style={styles.vitaminStatus}>
+          <Text style={styles.vitaminTitle}>Vitamin Status</Text>
+          <Text>
             Based on your symptoms, it appears that you are suffering from a Vitamin C deficiency.
-          </p>
-        </div>
+          </Text>
+        </View>
       )}
 
       {/* Recommendations and Exit buttons */}
-      <div className="action-buttons">
-        <button 
-          className="recommendations-btn" 
-          style={{
-            backgroundColor: isDoneClicked ? '#4A90E2' : 'initial'
-          }}
-        >
-          Recommendations
-        </button>
+      <View style={styles.actionButtons}>
+        <Button 
+          title="Recommendations" 
+          color={isDoneClicked ? '#4A90E2' : 'gray'} 
+        />
         {isDoneClicked && (
-          <button className="exit-btn">Exit</button>
+          <Button title="Exit" onPress={() => {}} />
         )}
-      </div>
-    </div>
+      </View>
+    </View>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    padding: 20,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  title: {
+    fontSize: 20,
+    marginBottom: 20,
+  },
+  image: {
+    width: 200,
+    height: 200,
+    borderRadius: 10,
+    marginBottom: 20,
+  },
+  buttonSection: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginBottom: 20,
+  },
+  vitaminStatus: {
+    marginTop: 20,
+  },
+  vitaminTitle: {
+    fontSize: 18,
+    fontWeight: 'bold',
+  },
+  actionButtons: {
+    marginTop: 20,
+  },
+});
 
 export default PhotoUploadPage;
