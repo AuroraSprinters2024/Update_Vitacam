@@ -9,7 +9,8 @@ import Profile from "./screens/Profile.js";
 import LandingPage from './screens/Landing';
 import HomeTreatmentScreen from './screens/Hometreatments';
 import PhotoUploadPage from './screens/PhotoUpload';
-import PreQuestionsPage from './screens/Prequestions'
+import PreQuestionsPage from './screens/Prequestions';
+import HelpdeskScreen from './screens/Helpdesk'
 
 
 const Stack = createStackNavigator();
@@ -30,6 +31,7 @@ export default function App() {
         <Stack.Screen name= "hometreatment" component={HomeTreatmentScreen}/>
         <Stack.Screen name="prequestions" component={PreQuestionsPage}/>
         <Stack.Screen name='photoUpload' component={PhotoUploadPage}/>
+        <Stack.Screen name='Helpdesk' component={HelpdeskScreen}/>
       </Stack.Navigator>
     </NavigationContainer>
   );
