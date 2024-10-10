@@ -134,7 +134,7 @@ export default function LoginPage() {
         <Text style={styles.forgotPasswordText}>Forgot Password?</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity style={styles.loginButton} onPress={() => navigation.navigate('hometreatment')}>
+      <TouchableOpacity style={styles.loginButton} onPress={() => navigation.navigate('Home')}>
         <Text style={styles.loginButtonText}>Login</Text>
       </TouchableOpacity>
 

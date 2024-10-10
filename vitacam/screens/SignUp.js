@@ -56,8 +56,7 @@ export default function SignUpScreen({ navigation }) {
       {/* Sign Up Button */}
       <TouchableOpacity
         style={styles.button}
-        onPress={() => console.log('Sign Up')}
-        disabled={!agree}
+        onPress={() => navigation.navigate('Home')}        
       >
         <Text style={styles.buttonText}>Sign Up</Text>
       </TouchableOpacity>
