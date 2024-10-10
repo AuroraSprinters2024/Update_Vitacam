@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, Image, TouchableOpacity, FlatList } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons'; // Make sure you have this library installed
+import Footer from './Footer';
 
 const HomeTreatmentScreen = () => {
   const [selectedIndex, setSelectedIndex] = useState(null);
@@ -14,13 +15,13 @@ const HomeTreatmentScreen = () => {
   };
 
   const data = [
-    { id: 1, title: 'Vitamin D' },
-    { id: 2, title: 'Vitamin C' },
-    { id: 3, title: 'Zinc' },
-    { id: 4, title: 'Iron' },
+    { id: 1, title: 'Vitamin A', options: ['Carrot', 'Spinach', 'Sweet Potato'] },
+    { id: 2, title: 'Vitamin B', options: ['Eggs', 'Milk', 'Meat'] },
+    { id: 3, title: 'Vitamin C', options: ['Orange', 'Lemon', 'Broccoli'] },
+    { id: 4, title: 'Vitamin D', options: ['Sunlight', 'Fish', 'Eggs'] },
+    { id: 5, title: 'Vitamin E', options: ['Almonds', 'Sunflower Seeds', 'Spinach'] },
+    { id: 6, title: 'Zinc', options: ['Meat', 'Shellfish', 'Legumes'] },
   ];
-
-  const options = ['Option 1', 'Option 2', 'Option 3', 'Option 4'];
 
   return (
     <View style={styles.container}>
@@ -31,17 +32,15 @@ const HomeTreatmentScreen = () => {
         </TouchableOpacity>
         <Text style={styles.headerTitle}>Home Treatments</Text>
         <TouchableOpacity>
-          <Icon name="camera" size={30} color="#2d2d2d" />
+          <Icon name="camera-outline" size={30} color="#fff" style={styles.cameraButton} />
         </TouchableOpacity>
       </View>
 
-      {/* Image */}
       <Image
-        source={require('../assets/hometreat.jpg')} // Add your image here
+        source={require('../assets/hometreat.jpg')}
         style={styles.headerImage}
       />
 
-      {/* Dropdowns */}
       <FlatList
         data={data}
         keyExtractor={(item) => item.id.toString()}
@@ -61,7 +60,7 @@ const HomeTreatmentScreen = () => {
 
             {selectedIndex === index && (
               <View style={styles.dropdownOptions}>
-                {options.map((option, i) => (
+                {item.options.map((option, i) => (
                   <Text key={i} style={styles.optionText}>{option}</Text>
                 ))}
               </View>
@@ -72,15 +71,7 @@ const HomeTreatmentScreen = () => {
 
       {/* Footer */}
       <View style={styles.footer}>
-        <TouchableOpacity>
-          <Icon name="storefront-outline" size={30} color="#2d2d2d" />
-        </TouchableOpacity>
-        <TouchableOpacity>
-          <Icon name="camera-outline" size={30} color="#0051ba" />
-        </TouchableOpacity>
-        <TouchableOpacity>
-          <Icon name="home-outline" size={30} color="#2d2d2d" />
-        </TouchableOpacity>
+        <Footer/>
       </View>
     </View>
   );
@@ -89,33 +80,38 @@ const HomeTreatmentScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#f5f5f5',
   },
   header: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
     paddingHorizontal: 20,
-    paddingVertical: 10,
+    paddingTop:35,
+    paddingBottom:15,    
   },
   headerTitle: {
-    fontSize: 18,
+    fontSize: 20,
     fontWeight: 'bold',
-    color: '#2d2d2d',
+    color: '#374151',
   },
   headerImage: {
     width: '90%',
-    height: 200,
+    height: 50,
     alignSelf: 'center',
     borderRadius: 15,
-    marginBottom: 20,
+    marginVertical: 10,
+  },
+  cameraButton: {
+    backgroundColor: '#0E4385',
+    borderRadius: 50,
+    padding: 10,
   },
   dropdownContainer: {
     marginHorizontal: 20,
     marginVertical: 10,
   },
   dropdown: {
-    backgroundColor: '#0051ba',
+    backgroundColor: '#0E4385',
     borderRadius: 10,
     padding: 15,
     flexDirection: 'row',
@@ -149,4 +145,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default HomeTreatmentScreen;
+export default HomeTreatmentScreen;   

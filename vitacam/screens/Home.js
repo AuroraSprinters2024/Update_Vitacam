@@ -143,7 +143,7 @@ const styles = StyleSheet.create({
   },
   slideshowContainer: {
     width: '100%', // Adjust as needed
-    height: 200, 
+    height: 195, 
     overflow: 'hidden', // Ensure that images do not overflow
     alignItems: 'center', // Center the image horizontally
     justifyContent: 'center', // Center the image vertically
@@ -151,7 +151,7 @@ const styles = StyleSheet.create({
   },
   image: {
     width: 300, // Adjust the width as needed
-    height: 200, // Adjust the height as needed
+    height: 195, // Adjust the height as needed
     resizeMode: 'cover', // Cover the image in the given dimensions
     borderRadius:10,
   },
