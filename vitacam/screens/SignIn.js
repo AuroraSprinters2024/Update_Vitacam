@@ -53,7 +53,7 @@ export default function LoginPage() {
       marginBottom: 20,
     },
     loginButton: {
-      backgroundColor: '#1d4e89',
+      backgroundColor: '#0E4385',
       paddingVertical: 15,
       borderRadius: 25,
       width: '100%',
