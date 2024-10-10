@@ -9,9 +9,13 @@ import {
   ScrollView,
 } from 'react-native';
 import Footer from './Footer';
+import {useNavigation} from '@react-navigation/native';
+
 
 
 const Home = () => {
+  const navigation = useNavigation();
+
   const [index, setIndex] = useState(0); // State to keep track of the current image index
   const images = [
     require('../assets/home6.jpeg'), // First image
@@ -32,10 +36,12 @@ const Home = () => {
     <SafeAreaView style={styles.container}>
       <ScrollView contentContainerStyle={styles.scrollViewContent}>
         {/* Profile Greeting */}
+        <TouchableOpacity onPress={() => navigation.navigate('Profile')}>
         <View style={styles.profileSection}>
           <Image source={require('../assets/profile.png')} style={styles.profileImage}/>
           <Text style={styles.greeting}>Hello Perera!</Text>
         </View>
+        </TouchableOpacity>
 
         {/* Logo Section */}
         <View style={styles.logoSection}>
@@ -143,7 +149,7 @@ const styles = StyleSheet.create({
   },
   slideshowContainer: {
     width: '100%', // Adjust as needed
-    height: 200, 
+    height: 195, 
     overflow: 'hidden', // Ensure that images do not overflow
     alignItems: 'center', // Center the image horizontally
     justifyContent: 'center', // Center the image vertically
@@ -151,7 +157,7 @@ const styles = StyleSheet.create({
   },
   image: {
     width: 300, // Adjust the width as needed
-    height: 200, // Adjust the height as needed
+    height: 195, // Adjust the height as needed
     resizeMode: 'cover', // Cover the image in the given dimensions
     borderRadius:10,
   },
