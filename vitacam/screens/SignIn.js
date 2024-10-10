@@ -22,12 +22,14 @@ export default function LoginPage() {
       fontSize: 24,
       fontWeight: 'bold',
       marginBottom: 40,
+      color: '#335F94',
+
     },
     inputContainer: {
       flexDirection: 'row',
       alignItems: 'center',
       backgroundColor: '#14274e',
-      borderRadius: 25,
+      borderRadius: 10,
       paddingHorizontal: 15,
       paddingVertical: 10,
       marginBottom: 20,
