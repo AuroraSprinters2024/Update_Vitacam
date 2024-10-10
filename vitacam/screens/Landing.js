@@ -12,35 +12,36 @@ const LandingPage = () => {
 
   const screens = [
     {
-      title: "AI: Your Shield Against Dengue!",
-      description: "Empower Your Health: Detect Dengue with AI, Your Smart Solution for Early Detection!",
+     
       isGrid: true, // Flag for grid layout
       images: [
         require('../assets/landing1.jpg'), 
         require('../assets/landing2.webp'), 
         require('../assets/landing3.webp'), 
         require('../assets/landing4.jpg')  
-      ]
+      ],
+      title: "AI: Shield Against Vitamin Deficiency!",
+      description: "Empower Your Health: Detect Dengue with AI, Your Smart Solution for Early Detection!"
     },
     {
       title: "Swift Solutions, Brighter Futures!",
-      description: "Detects Dengue With AI: Swift Solutions, Brighter Futures!",
+      description: "Detects vitamin deficiency With AI",
       isGrid: true, // Flag for grid layout
       images: [
         require('../assets/landing6.jpg'), 
-        require('../assets/landing2.webp'), 
+        require('../assets/landing8.jpg'), 
         require('../assets/landing3.webp'), 
-        require('../assets/landing4.jpg')  
+        require('../assets/landing7.jpg')  
       ]
     },
     {
       title: "Stay Ahead of the Threat!",
-      description: "Stay one step ahead of Dengue with cutting-edge AI detection technology.",
+      description: "Stay one step ahead of vitamin deficiency with cutting-edge AI detection technology.",
       isGrid: true, // Flag for grid layout
       images: [
         require('../assets/landing5.png'), 
-        require('../assets/landing2.webp'), 
-        require('../assets/landing3.webp'), 
+        require('../assets/landing9.png'), 
+        require('../assets/landing10.webp'), 
         require('../assets/landing4.jpg')  
       ]
     }
@@ -59,6 +60,12 @@ const LandingPage = () => {
   return (
     <View style={styles.container}>
       {/* Scrollable content */}
+      <View style={styles.logoSection}>
+          <Image
+            source={require('../assets/home1.png')} // Replace with actual logo path
+            style={styles.logo}
+          />
+        </View>
       <ScrollView
         ref={scrollViewRef}
         horizontal
@@ -69,19 +76,20 @@ const LandingPage = () => {
       >
         {screens.map((screen, index) => (
           <View key={index} style={styles.screen}>
-            <Text style={styles.title}>{screen.title}</Text>
-            <Text style={styles.description}>{screen.description}</Text>
-
+           
             {/* Grid View for Images */}
             {screen.isGrid && (
               <View style={styles.gridContainer}>
                 {screen.images.map((image, imgIndex) => (
-                  <View key={imgIndex} style={styles.gridItem}>
+                  <View key={imgIndex} style={
+                    styles.gridItem}>
                     <Image source={image} style={styles.gridImage} />
                   </View>
                 ))}
               </View>
             )}
+             <Text style={styles.title}>{screen.title}</Text>
+             <Text style={styles.description}>{screen.description}</Text>
           </View>
         ))}
       </ScrollView>
@@ -131,30 +139,30 @@ const styles = StyleSheet.create({
   gridItem: {
     width: '50%', // 48% width to leave space for margin
     aspectRatio: 1, // Ensure the image remains square
-    marginBottom: 5,
+    marginBottom: 3,
   },
   gridImage: {
-    width: '100%',
-    height: '50%',
+    width: '90%',
+    height: '85%',
     borderRadius: 10,
   },
   title: {
     fontSize: 20,
     fontWeight: 'bold',
-    color: '#333',
+    color: '#0E4385',
     marginBottom: 10,
     textAlign: 'center',
   },
   description: {
     fontSize: 16,
     textAlign: 'center',
-    color: '#666',
-    marginBottom: 20,
+    color: '#3A659A',
+    marginBottom: 5,
   },
   pagination: {
     flexDirection: 'row',
     justifyContent: 'center',
-    marginBottom: 20,
+    marginBottom: 15,
   },
   dot: {
     width: 10,
@@ -163,13 +171,13 @@ const styles = StyleSheet.create({
     marginHorizontal: 5,
   },
   activeDot: {
-    backgroundColor: '#005A9C',
+    backgroundColor: '#0E4385',
   },
   inactiveDot: {
-    backgroundColor: '#d3d3d3',
+    backgroundColor: '#4285F4',
   },
   button: {
-    backgroundColor: '#005A9C',
+    backgroundColor: '#0E4385',
     paddingVertical: 15,
     paddingHorizontal: 30,
     borderRadius: 30,
@@ -180,6 +188,10 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontSize: 18,
     fontWeight: 'bold',
+  },
+  logoSection: {
+    marginTop: 50,
+    alignItems: 'center',
   },
 });
 
