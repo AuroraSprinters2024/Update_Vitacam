@@ -2,20 +2,24 @@
 import React from 'react';
 import { View, StyleSheet, TouchableOpacity } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/native';
 
-const Footer = ({ navigation }) => {
+const Footer = () => {
+
+  const navigation = useNavigation();
+
   return (
     <View style={styles.footerContainer}>
       <TouchableOpacity onPress={() => navigation.navigate('Home')}>
         <Ionicons name="home-outline" size={25} color="#4285F4" />
       </TouchableOpacity>
       
-      <TouchableOpacity onPress={() => navigation.navigate('Camera')}>
+      <TouchableOpacity onPress={() => navigation.navigate('photoUpload')}>
         <View style={styles.cameraButton}>
           <Ionicons name="camera-outline" size={30} color="white" />
         </View>
       </TouchableOpacity>
-      <TouchableOpacity onPress={() => navigation.navigate('Store')}>
+      <TouchableOpacity onPress={() => navigation.navigate('hometreatment')}>
         <Ionicons name="storefront-outline" size={25} color="#4285F4" />
       </TouchableOpacity>
     </View>
