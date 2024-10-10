@@ -22,12 +22,14 @@ export default function LoginPage() {
       fontSize: 24,
       fontWeight: 'bold',
       marginBottom: 40,
+      color: '#335F94',
+
     },
     inputContainer: {
       flexDirection: 'row',
       alignItems: 'center',
       backgroundColor: '#14274e',
-      borderRadius: 25,
+      borderRadius: 10,
       paddingHorizontal: 15,
       paddingVertical: 10,
       marginBottom: 20,
@@ -51,7 +53,7 @@ export default function LoginPage() {
       marginBottom: 20,
     },
     loginButton: {
-      backgroundColor: '#1d4e89',
+      backgroundColor: '#0E4385',
       paddingVertical: 15,
       borderRadius: 25,
       width: '100%',
@@ -132,7 +134,7 @@ export default function LoginPage() {
         <Text style={styles.forgotPasswordText}>Forgot Password?</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity style={styles.loginButton} onPress={() => navigation.navigate('hometreatment')}>
+      <TouchableOpacity style={styles.loginButton} onPress={() => navigation.navigate('Home')}>
         <Text style={styles.loginButtonText}>Login</Text>
       </TouchableOpacity>
 

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, CheckBox } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, CheckBox, Image } from 'react-native';
 
 export default function SignUpScreen({ navigation }) {
   const [name, setName] = useState('');
@@ -56,8 +56,7 @@ export default function SignUpScreen({ navigation }) {
       {/* Sign Up Button */}
       <TouchableOpacity
         style={styles.button}
-        onPress={() => console.log('Sign Up')}
-        disabled={!agree}
+        onPress={() => navigation.navigate('Home')}        
       >
         <Text style={styles.buttonText}>Sign Up</Text>
       </TouchableOpacity>
@@ -69,6 +68,25 @@ export default function SignUpScreen({ navigation }) {
           Login
         </Text>
       </Text>
+
+      <View style={styles.orDivider}>
+          <View style={styles.line} />
+          <Text style={styles.orText}>OR</Text>
+          <View style={styles.line} />
+        </View>
+
+
+        <View style={styles.socialContainer}>
+        <TouchableOpacity>
+          <Image source={require('../assets/facebook.png')} style={styles.socialIcon} />
+        </TouchableOpacity>
+        <TouchableOpacity>
+          <Image source={require('../assets/apple.png')} style={styles.socialIcon} />
+        </TouchableOpacity>
+        <TouchableOpacity>
+          <Image source={require('../assets/google.webp')} style={styles.socialIcon} />
+        </TouchableOpacity>
+      </View>
     </View>
   );
 }
@@ -85,7 +103,7 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: 'bold',
     marginBottom: 40,
-    color: '#3D5170',
+    color: '#335F94',
   },
   inputContainer: {
     width: '100%',
@@ -112,7 +130,7 @@ const styles = StyleSheet.create({
     color: '#3366BB',
   },
   button: {
-    backgroundColor: '#1d4e89',
+    backgroundColor: '#0E4385',
     paddingVertical: 15,
     paddingHorizontal: 80,
     borderRadius: 25,
@@ -130,5 +148,29 @@ const styles = StyleSheet.create({
   loginLink: {
     color: '#3366BB',
     fontWeight: 'bold',
+  },
+  orDivider: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginVertical: 20,
+  },
+  line: {
+    flex: 1,
+    height: 3,
+    backgroundColor: '#1d4e89',
+  },
+  orText: {
+    marginHorizontal: 10,
+    fontSize: 16,
+    color: '#1d4e89',
+  },
+  socialContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    width: '100%',
+  },
+  socialIcon: {
+    width: 50,
+    height: 50,
   },
 });
