@@ -1,48 +1,57 @@
-import React from "react";
-import { View, Text, Image, StyleSheet, TouchableOpacity } from "react-native";
-import Icon from "react-native-vector-icons/Ionicons"; // Importing Ionicons
+import React from 'react';
+import { View, Text, StyleSheet, Image, TouchableOpacity, Alert } from 'react-native';
+import Icon from 'react-native-vector-icons/Ionicons';
+import Footer from './Footer';
 
-const Profile = () => {
+
+const ProfileScreen = () => {
+  const handleLogout = () => {
+    Alert.alert('Logged out');
+  };
+
+  const handleEditProfile = () => {
+    Alert.alert('Edit Profile Clicked');
+  };
+
   return (
     <View style={styles.container}>
+      {/* Header */}
       <View style={styles.header}>
-        <TouchableOpacity style={styles.backButton}>
-          <Icon name="arrow-back-outline" size={24} color="#000000" />
+        <TouchableOpacity>
+          <Icon name="arrow-back" size={24} color="#2d2d2d" />
         </TouchableOpacity>
         <Text style={styles.headerTitle}>Profile</Text>
+        <TouchableOpacity>
+        
+        </TouchableOpacity>
       </View>
-      <View style={styles.bgd}></View>
 
+      {/* Profile Picture */}
       <View style={styles.profileContainer}>
+        <View style={styles.imgbg}></View>
         <Image
-          source={{
-            uri: "https://cdn.dribbble.com/users/5534/screenshots/14230133/profile_4x.jpg",
-          }} // Add the profile image URL here
+          source={require('../assets/profile.png')}
           style={styles.profileImage}
         />
-        <Text style={styles.nameText}>S.M.A. Perera</Text>
-        <Text style={styles.emailText}>Perera23@gmail.com</Text>
-        <Text style={styles.passwordText}>•••••••••</Text>
+        <Text style={styles.profileName}>S.M.A.perera</Text>
+        <Text style={styles.profileEmail}>Perera23@gmail.com</Text>
+        <Text style={styles.passwordPlaceholder}>••••••••••</Text>
 
-        <TouchableOpacity style={styles.editProfileButton}>
+        {/* Edit Profile Button */}
+        <TouchableOpacity style={styles.editProfileButton} onPress={handleEditProfile}>
+          <Icon name="create-outline" size={20} color="#0E4385" />
           <Text style={styles.editProfileText}>Edit Profile</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={styles.logoutButton}>
+        {/* Logout Button */}
+        <TouchableOpacity style={styles.logoutButton} onPress={handleLogout}>
           <Text style={styles.logoutText}>Logout</Text>
         </TouchableOpacity>
       </View>
 
-      <View style={styles.footer}>
-        <TouchableOpacity style={styles.iconButton}>
-          <Icon name="home-outline" size={28} color="#1A3C75" />
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.iconButton}>
-          <Icon name="camera-outline" size={28} color="#1A3C75" />
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.iconButton}>
-          <Icon name="settings-outline" size={28} color="#1A3C75" />
-        </TouchableOpacity>
+       {/* Footer */}
+       <View style={styles.footer}>
+        <Footer/>
       </View>
     </View>
   );
@@ -51,80 +60,95 @@ const Profile = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: '#fff',
   },
   header: {
-    flexDirection: "row",
-    alignItems: "center",
-    padding: 16,
-    backgroundColor: "#1A3C75",
-  },
-  backButton: {
-    marginRight: 16,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    paddingHorizontal: 20,
+    paddingTop:35,
+    paddingBottom:15,    
   },
   headerTitle: {
-    fontSize: 18,
-    color: "#1A3C75",
-    alignContent: "center",
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: '#374151',
   },
+  
   profileContainer: {
-    alignItems: "center",
-    marginTop: 100,
+    alignItems: 'center',
+    marginTop: 20,
   },
   profileImage: {
-    width: 100,
-    height: 100,
-    borderRadius: 50,
+    width: 120,
+    height: 120,
+    borderRadius: 60,
+    borderWidth: 4,
+    borderColor: '#d0daf3',
+    marginTop:-50,
+    backgroundColor:'#fff'
   },
-
-  nameText: {
+  profileName: {
+    fontSize: 22,
+    fontWeight: 'bold',
+    color: '#2d2d2d',
+    marginTop: 10,
+  },
+  profileEmail: {
+    fontSize: 16,
+    color: '#6b7280',
+    marginTop: 5,
+  },
+  imgbg:{
+    backgroundColor:'#0E4385',
+    width:'100%',
+    height:90,
+  },
+  passwordPlaceholder: {
     fontSize: 20,
-    fontWeight: "bold",
-    marginVertical: 8,
-  },
-  emailText: {
-    fontSize: 16,
-    color: "#666",
-  },
-  passwordText: {
-    fontSize: 16,
-    color: "#666",
-    marginBottom: 100,
+    marginTop: 5,
+    color: '#6b7280',
   },
   editProfileButton: {
-    backgroundColor: "#fff",
-    borderWidth: 1,
-    borderColor: "#1A3C75",
-    paddingHorizontal: 16,
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#d0daf3',
+    paddingHorizontal: 15,
     paddingVertical: 8,
-    borderRadius: 8,
-    marginBottom: 16,
+    borderRadius: 10,
+    marginTop: 45,
   },
   editProfileText: {
-    color: "#1A3C75",
+    fontSize: 16,
+    color: '#0E4385',
+    marginLeft: 5,
+    fontWeight:'600'
   },
   logoutButton: {
-    backgroundColor: "#1A3C75",
-    paddingHorizontal: 16,
-    paddingVertical: 8,
-    borderRadius: 8,
-    marginTop: 30,
+    backgroundColor: '#0E4385',
+    paddingVertical: 12,
+    paddingHorizontal: 80,
+    borderRadius: 30,
+    marginTop: 85,
   },
   logoutText: {
-    color: "#fff",
+    fontSize: 18,
+    color: '#fff',
+    fontWeight:'bold'
   },
   footer: {
-    position: "absolute",
+    position: 'absolute',
     bottom: 0,
-    flexDirection: "row",
-    justifyContent: "space-around",
-    width: "100%",
-    padding: 16,
-    backgroundColor: "#E6EDF7",
-  },
-  iconButton: {
-    padding: 16,
+    left: 0,
+    right: 0,
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    paddingVertical: 15,
+    backgroundColor: '#d0daf3',
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20,
   },
 });
 
-export default Profile;
+export default ProfileScreen;

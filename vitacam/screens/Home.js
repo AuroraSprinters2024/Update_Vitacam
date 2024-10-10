@@ -9,9 +9,13 @@ import {
   ScrollView,
 } from 'react-native';
 import Footer from './Footer';
+import {useNavigation} from '@react-navigation/native';
+
 
 
 const Home = () => {
+  const navigation = useNavigation();
+
   const [index, setIndex] = useState(0); // State to keep track of the current image index
   const images = [
     require('../assets/home6.jpeg'), // First image
@@ -32,10 +36,12 @@ const Home = () => {
     <SafeAreaView style={styles.container}>
       <ScrollView contentContainerStyle={styles.scrollViewContent}>
         {/* Profile Greeting */}
+        <TouchableOpacity onPress={() => navigation.navigate('Profile')}>
         <View style={styles.profileSection}>
           <Image source={require('../assets/profile.png')} style={styles.profileImage}/>
           <Text style={styles.greeting}>Hello Perera!</Text>
         </View>
+        </TouchableOpacity>
 
         {/* Logo Section */}
         <View style={styles.logoSection}>
