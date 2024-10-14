@@ -1,11 +1,47 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, CheckBox, Image } from 'react-native';
+import { Alert } from 'react-native';
+
 
 export default function SignUpScreen({ navigation }) {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [agree, setAgree] = useState(false);
+
+
+  const handleSignup = async () => {
+    if (!email || !password || !name) {
+      Alert.alert('Error', 'Please fill out all fields.');
+      return;
+    }
+
+    try {
+      const response = await fetch('http://localhost:8080/signup', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          username: name,
+          email: email,
+          password: password,
+        }),
+      });
+
+      const data = await response.text();
+
+      if (response.status === 200) {
+        Alert.alert('Success', 'Signup successful');
+        navigation.navigate('Home'); // Redirect to home or other pages after successful signup
+      } else {
+        Alert.alert('Error', data);
+      }
+    } catch (error) {
+      Alert.alert('Error', 'Failed to connect to the server');
+    }
+  };
+
 
   return (
     <View style={styles.container}>
@@ -56,7 +92,7 @@ export default function SignUpScreen({ navigation }) {
       {/* Sign Up Button */}
       <TouchableOpacity
         style={styles.button}
-        onPress={() => navigation.navigate('Home')}        
+        onPress={handleSignup}     
       >
         <Text style={styles.buttonText}>Sign Up</Text>
       </TouchableOpacity>
