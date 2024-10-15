@@ -42,11 +42,11 @@ const PhotoUploadPage = () => {
 
       {image && <Image source={{ uri: image }} style={styles.image} />}
 
-      <Button title="Choose Image" onPress={pickImage} />
+      <View style={styles.imagebtn}><Button title="Choose Image" onPress={pickImage}  /></View>
 
       <View style={styles.buttonSection}>
-        <Button title="Cancel" onPress={() => setImage(null)} />
-        <Button title="Done" onPress={handleDoneClick} />
+      <View style={styles.imagebn}> <Button title="Cancel" onPress={() => setImage(null)} /></View>
+      <View style={styles.imagebn}><Button title="Done" onPress={handleDoneClick} /></View>
       </View>
 
       {/* Vitamin Status Section */}
@@ -97,6 +97,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     marginBottom: 20,
+    gap:20,
   },
   vitaminStatus: {
     marginTop: 20,
@@ -108,6 +109,24 @@ const styles = StyleSheet.create({
   actionButtons: {
     marginTop: 20,
   },
+  imagebtn:{
+    backgroundColor: 'rgb(33, 150, 243);',
+    paddingVertical: 15,
+    borderRadius: 25,
+    width: '70%',
+    alignItems: 'center',
+    marginBottom: 20,
+  marginTop:20,  },
+
+  imagebn:{
+    backgroundColor: 'rgb(33, 150, 243);',
+    paddingVertical: 15,
+    borderRadius: 25,
+    width: '70%',
+    alignItems: 'center',
+    marginLeft:-25,
+    marginRight:10,
+ },
 });
 
 export default PhotoUploadPage;

@@ -2,14 +2,17 @@ import React from 'react';
 import { View, Text, Image, TouchableOpacity, StyleSheet } from 'react-native';
 import { Ionicons, MaterialIcons } from '@expo/vector-icons';
 import Icon from 'react-native-vector-icons/Ionicons';
+import { useNavigation } from '@react-navigation/native';
+
 
 
 const DoctorDetailsScreen = () => {
+  const navigation = useNavigation();
 
   return (
     <View style={styles.container}>
        <View style={styles.header}>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate('Home')}>
           <Icon name="arrow-back" size={24} color="#2d2d2d" />
         </TouchableOpacity>
         <Text style={styles.headerTitle}>Profile</Text>
