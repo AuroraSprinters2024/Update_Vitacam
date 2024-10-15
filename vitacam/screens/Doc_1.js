@@ -1,182 +1,143 @@
-import React from 'react';
-import { View, Text, Image, TouchableOpacity, TextInput, StyleSheet, ImageBackground } from 'react-native';
+import React, { useState } from 'react';
+import { View, Text, Image, FlatList, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
+import Icon from 'react-native-vector-icons/Ionicons';  // Make sure to install vector-icons
 
-const Doctor = () => {
-  const location = "Colombo, WP";
-  const doctors = [
-    {
-      id: 1,
-      name: 'UdhayaSri',
-      location: 'Colombo 05',
-      rating: 5.0,
-      reviews: 58,
-      distance: '2.5 km / 40 min',
-      hospital: 'Hospital',
-      image: require('../assets/doc.png'),
-    },
-    {
-      id: 2,
-      name: 'UdhayaSri',
-      location: 'Colombo 06',
-      rating: 3.7,
-      reviews: 34,
-      distance: '2.5 km / 40 min',
-      hospital: 'Hospital',
-      image: require('../assets/doc.png'),
-    }
-  ];
+const doctors = [
+  {
+    id: '1',
+    name: 'Dr. David Patel',
+    location: 'Golden Center',
+    image: require('../assets/doctor.webp'), // Replace with your image path
+  },
+  {
+    id: '2',
+    name: 'Dr. David Patel',
+    location: 'Golden Center',
+    image: require('../assets/doctor.webp'), // Replace with your image path
+  },
+  {
+    id: '3',
+    name: 'Dr. David Patel',
+    location: 'Golden Center',
+    image: require('../assets/doctor.webp'), // Replace with your image path
+  },
+  {
+    id: '4',
+    name: 'Dr. David Patel',
+    location: 'Golden Center',
+    image: require('../assets/doctor.webp'), // Replace with your image path
+  },
+  {
+    id: '5',
+    name: 'Dr. David Patel',
+    location: 'Golden Center',
+    image: require('../assets/doctor.webp'), // Replace with your image path
+  },
+  // Add more doctors as needed
+];
+
+const DoctorsListScreen = ({ navigation }) => {
+  const [searchText, setSearchText] = useState('');
+
+  const filteredDoctors = doctors.filter((doctor) =>
+    doctor.name.toLowerCase().includes(searchText.toLowerCase())
+  );
+
+  const renderDoctor = ({ item }) => (
+    <TouchableOpacity style={styles.card} onPress={() => navigation.navigate('Doc_2')}>
+      <Image source={item.image} style={styles.image} />
+      <View style={styles.infoContainer}>
+        <Text style={styles.name}>{item.name}</Text>
+        <Text style={styles.location}>
+          <Icon name="location-outline" size={16} color="white" /> {item.location}
+        </Text>
+      </View>
+    </TouchableOpacity>
+  );
 
   return (
-    <View style={styles.app}>
-      {/* Location and Search Bar */}
-      <View style={styles.locationSearch}>
-        <Text style={styles.locationText}>Location</Text>
-        <TextInput
-          value={location}
-          style={styles.input}
-        />
-        <TextInput placeholder="Search doctor..." style={styles.input} />
-      </View>
-
-      {/* Specialist Doctors Section with Overlay Text */}
-      <ImageBackground
-        source={require('../assets/doc.png')} // Ensure this path is correct
-        style={styles.specialistSection}
-        resizeMode="cover"
-      >
-        <Text style={styles.specialistTitle}>Looking for Specialist Doctors?</Text>
-        <Text style={styles.specialistSubtitle}>Schedule an appointment with our top doctors.</Text>
-      </ImageBackground>
-
-      {/* Popular Doctors Section */}
-      <View style={styles.popularSection}>
-        <Text style={styles.popularTitle}>Popular Doctors</Text>
-        {doctors.map((doctor) => (
-          <View key={doctor.id} style={styles.doctorCard}>
-            <Image source={doctor.image} style={styles.doctorImage} />
-            <View style={styles.doctorInfo}>
-              <Text>{doctor.name}</Text>
-              <Text>{doctor.location}</Text>
-              <Text>⭐ {doctor.rating} ({doctor.reviews} Reviews)</Text>
-              <Text>{doctor.distance}</Text>
-              <Text>{doctor.hospital}</Text>
-            </View>
-          </View>
-        ))}
-      </View>
-
-      {/* Bottom Navigation */}
-      <View style={styles.navBar}>
+    <View style={styles.container}>
+       <View style={styles.header}>
         <TouchableOpacity>
-          <Image source={require('../assets/nav_3.png')} style={styles.icon} />
+          <Icon name="arrow-back" size={24} color="#2d2d2d" />
         </TouchableOpacity>
+        <Text style={styles.headerTitle}>Profile</Text>
         <TouchableOpacity>
-          <Image source={require('../assets/nav_2.png')} style={styles.icon} />
-        </TouchableOpacity>
-        <TouchableOpacity>
-          <Image source={require('../assets/nav_3.png')} style={styles.icon} />
+        
         </TouchableOpacity>
       </View>
+      <TextInput
+        style={styles.searchInput}
+        placeholder="Search doctor..."
+        value={searchText}
+        onChangeText={setSearchText}
+      />
+      <Text style={styles.resultsText}>{filteredDoctors.length} founds</Text>
+      <FlatList
+        data={filteredDoctors}
+        keyExtractor={(item) => item.id}
+        renderItem={renderDoctor}
+      />
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
-  app: {
+  container: {
     flex: 1,
-    maxWidth: '400px',
-    margin: '0 auto',
-    backgroundColor: '#ffffff',
-    padding: 20,
-    borderRadius: 10,
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 1,
-    },
-    shadowOpacity: 0.2,
-    shadowRadius: 1.41,
-    elevation: 2, // For Android
+    padding: 16,
+    backgroundColor: '#fff',
   },
-  locationText:{
-    marginTop:10,
-    
-
-  },
-  locationSearch: {
-    marginBottom: 15,
-  },
-  input: {
-    display: 'block',
-    width: '100%',
-    padding: 10,
-    marginBottom: 10,
-    borderRadius: 5,
-    borderWidth: 1,
-    borderColor: '#ccc',
-  },
-  specialistSection: {
-    height: 200, // Adjust height as needed
-    width:400,
-    justifyContent: 'center',
-    alignItems: 'center',
-    padding: 20,
-    borderRadius: 10,
-    overflow: 'hidden',
-  },
-  specialistTitle: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    color: '#fff', // White text for visibility
-    textAlign: 'center',
-  },
-  specialistSubtitle: {
-    color: '#fff',
-    textAlign: 'center',
-  },
-  popularSection: {
-    marginBottom: 20,
-  },
-  popularTitle: {
-    fontSize: 18,
-    fontWeight: 'bold',
-  },
-  doctorCard: {
+  header: {
     flexDirection: 'row',
+    justifyContent: 'space-between',
     alignItems: 'center',
-    backgroundColor: '#f4f4f4',
-    padding: 15,
-    borderRadius: 10,
-    marginBottom: 10,
+    paddingHorizontal: 20,
+    paddingTop:35,
+    paddingBottom:15,    
   },
-  doctorImage: {
-    width: 100,
-    height: 100,
-    borderRadius: 50,
-    marginRight: 15,
+  headerTitle: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: '#374151',
   },
-  doctorInfo: {
-    textAlign: 'left',
-  },
-  navBar: {
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    alignItems: 'center',
-    backgroundColor: '#E6F0FA',
-    paddingVertical: 20,
-    borderTopWidth: 1,
-    borderTopColor: '#D1D1D1',
-    width: '100%',
-    height: 80,
-    position: 'absolute',
-    bottom: 0,
-    left: 0,
-  },
-  icon: {
-    width: 40,
+  searchInput: {
     height: 40,
-    resizeMode: 'contain',
+    borderColor: '#ccc',
+    borderWidth: 1,
+    borderRadius: 10,
+    paddingLeft: 8,
+    marginBottom: 16,
+  },
+  resultsText: {
+    fontSize: 16,
+    marginBottom: 10,
+  },
+  card: {
+    backgroundColor: '#0E4385',
+    borderRadius: 10,
+    padding: 16,
+    marginBottom: 16,
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  image: {
+    width: 60,
+    height: 60,
+    borderRadius: 10,
+  },
+  infoContainer: {
+    marginLeft: 16,
+  },
+  name: {
+    fontSize: 18,
+    color: 'white',
+    fontWeight: 'bold',
+  },
+  location: {
+    color: 'white',
+    marginTop: 5,
   },
 });
 
-export default Doctor;
+export default DoctorsListScreen;

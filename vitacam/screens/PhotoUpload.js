@@ -1,10 +1,14 @@
 import React, { useState } from 'react';
 import { View, Text, Button, Image, StyleSheet } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
+import { useNavigation } from '@react-navigation/native';
+
 
 const PhotoUploadPage = () => {
   const [image, setImage] = useState(null);
   const [isDoneClicked, setIsDoneClicked] = useState(false);
+   const navigation = useNavigation();
+
 
   // Function to handle image picking
   const pickImage = async () => {
@@ -63,6 +67,9 @@ const PhotoUploadPage = () => {
         />
         {isDoneClicked && (
           <Button title="Exit" onPress={() => {}} />
+        )}
+        {isDoneClicked && (
+          <Button title="Connect doctor" onPress={() => navigation.navigate('Doc_1')}/>
         )}
       </View>
     </View>

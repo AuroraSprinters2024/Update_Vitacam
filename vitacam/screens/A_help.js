@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FaPlay, FaPause } from 'react-icons/fa';
+import { Ionicons } from '@expo/vector-icons';
 
 const A_help = () => {
   const [isPlaying, setIsPlaying] = useState(false);
@@ -51,7 +51,7 @@ const A_help = () => {
 
       <div style={styles.audioPlayer}>
         <button onClick={handlePlayPause} style={styles.playButton}>
-          {isPlaying ? <FaPause /> : <FaPlay />} {isPlaying ? 'Pause' : 'Play'}
+          {isPlaying ? <Ionicons name="pause" size={24} color="black" /> : <Ionicons name="play" size={24} color="black" />} {isPlaying ? 'Pause' : 'Play'}
         </button>
         <p style={styles.audioTime}>0:05</p>
       </div>

@@ -14,7 +14,7 @@ const Footer = () => {
         <Ionicons name="home-outline" size={25} color="#4285F4" />
       </TouchableOpacity>
       
-      <TouchableOpacity onPress={() => navigation.navigate('photoUpload')}>
+      <TouchableOpacity onPress={() => navigation.navigate('prequestions')}>
         <View style={styles.cameraButton}>
           <Ionicons name="camera-outline" size={30} color="white" />
         </View>

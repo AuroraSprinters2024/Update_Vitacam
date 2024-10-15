@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, Modal, StyleSheet, Alert } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/native';
+
 
 const QuickQuestionsScreen = () => {
   const [checked, setChecked] = useState({
@@ -11,6 +13,7 @@ const QuickQuestionsScreen = () => {
     5: false,
     6: false,
   });
+  const navigation = useNavigation();
 
   const [modalVisible, setModalVisible] = useState(false);
 
@@ -52,7 +55,7 @@ const QuickQuestionsScreen = () => {
           </TouchableOpacity>
         ))}
       </View>
-      <TouchableOpacity style={styles.checkButton} onPress={() => {}}>
+      <TouchableOpacity style={styles.checkButton} onPress={() => navigation.navigate('photoUpload')}>
         <Text style={styles.checkText}>Check</Text>
       </TouchableOpacity>
 

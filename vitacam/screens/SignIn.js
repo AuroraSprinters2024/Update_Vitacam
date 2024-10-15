@@ -184,7 +184,7 @@ export default function LoginPage() {
       </View>
 
       <View style={styles.socialContainer}>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate('Home')}>
           <Image source={require('../assets/facebook.png')} style={styles.socialIcon} />
         </TouchableOpacity>
         <TouchableOpacity>

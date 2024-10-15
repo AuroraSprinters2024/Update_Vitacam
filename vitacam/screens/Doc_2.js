@@ -1,111 +1,155 @@
 import React from 'react';
-import { FaStar, FaUserAlt, FaCalendarAlt, FaPhoneAlt } from 'react-icons/fa';
-import { View, Text, Image, TouchableOpacity, TextInput, StyleSheet, ImageBackground } from 'react-native';
+import { View, Text, Image, TouchableOpacity, StyleSheet } from 'react-native';
+import { Ionicons, MaterialIcons } from '@expo/vector-icons';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 
-const DoctorDetails = () => {
+const DoctorDetailsScreen = () => {
+
   return (
-    <div style={styles.container}>
-      <div style={styles.profileContainer}>
-        <img
-          src={require('../assets/nav_2.png')} // Replace with the actual profile image URL
-          alt="Doctor"
-          style={styles.profileImage}
-        />
-        <div style={styles.detailsContainer}>
-          <h2>Dr. David Patel</h2>
-          <p>@ Golden Gate Center</p>
-        </div>
-      </div>
-      
+    <View style={styles.container}>
+       <View style={styles.header}>
+        <TouchableOpacity>
+          <Icon name="arrow-back" size={24} color="#2d2d2d" />
+        </TouchableOpacity>
+        <Text style={styles.headerTitle}>Profile</Text>
+        <TouchableOpacity>
+        
+        </TouchableOpacity>
+      </View>
+
+
+      <View style={styles.card}>
+        <Image source={require('../assets/doctor.webp')} style={styles.image} />
+        <View style={styles.infoContainer}>
+          <Text style={styles.name}>David</Text>
+          <Text style={styles.location}>
+          <Ionicons name="location" size={20} color="white" />Colombo
+          </Text>
+        </View>
+      </View>
+
       <div style={styles.statsContainer}>
         <div style={styles.statItem}>
-          <FaUserAlt />
-          <p>2,000+ patients</p>
+        <Ionicons name='man' size={28} color="white" style={styles.icons}/>
+        <p>2,000+ patients</p>
         </div>
         <div style={styles.statItem}>
-          <FaCalendarAlt />
-          <p>10+ years experience</p>
+        <Ionicons name="medal-outline" size={28} color="white" style={styles.icons}/>        
+        <p>10+ years </p>
         </div>
         <div style={styles.statItem}>
-          <FaStar style={{ color: 'gold' }} />
-          <p>5 rating</p>
+        <Ionicons name="star" size={28} color="white" style={styles.icons}/>
+        <p>5 rating</p>
         </div>
         <div style={styles.statItem}>
-          <FaStar />
-          <p>1,872 reviews</p>
+        <MaterialIcons  name="reviews" size={28} color="white" style={styles.icons}/>
+        <p>1,872 reviews</p>
         </div>
       </div>
 
-      <div style={styles.aboutSection}>
-        <h3>About me</h3>
-        <p>
-          Dr. David Patel, brings a wealth of experience to Golden Gate Cardiology Center in Golden Gate, CA.
-        </p>
-      </div>
+      <View style={styles.aboutContainer}>
+        <Text style={styles.aboutTitle}>About me</Text>
+        <Text style={styles.aboutText}>
+          David, brings a wealth of experience to Golden Gate Cardiology Center in Golden Gate, CA.{' '}
+          <Text style={styles.link}>view more</Text>
+        </Text>
+      </View>
 
-      <div style={styles.workingTimeSection}>
-        <h3>Working Time</h3>
-        <p>Monday - Friday, 08:00 AM - 18:00 PM</p>
-      </div>
-
-      <button style={styles.callButton}>
-        <FaPhoneAlt /> Call Now
-      </button>
-    </div>
+      <TouchableOpacity style={styles.callButton}>
+        <Text style={styles.callButtonText}>Book an appointment</Text>
+      </TouchableOpacity>
+    </View>
   );
 };
 
-const styles = {
+const styles = StyleSheet.create({
   container: {
-    padding: '20px',
-    backgroundColor: '#F5F5F5',
-    fontFamily: 'Arial, sans-serif',
-    maxWidth: '400px',
-    margin: 'auto',
-    borderRadius: '10px',
-    boxShadow: '0 4px 6px rgba(0,0,0,0.1)',
+    flex: 1,
+    padding: 16,
+    backgroundColor: '#fff',
   },
-  profileContainer: {
-    display: 'flex',
+  header: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
     alignItems: 'center',
-    marginBottom: '20px',
+    paddingHorizontal: 20,
+    paddingTop:35,
+    paddingBottom:15,    
   },
-  profileImage: {
-    borderRadius: '50%',
-    width: '100px',
-    height: '100px',
-  },
-  detailsContainer: {
-    marginLeft: '20px',
+  headerTitle: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: '#374151',
   },
   statsContainer: {
     display: 'flex',
     justifyContent: 'space-between',
     marginBottom: '20px',
+    marginTop:'30px',
   },
   statItem: {
     textAlign: 'center',
-    fontSize: '12px',
+    fontSize: '16px',
   },
-  aboutSection: {
-    marginBottom: '20px',
+  icons:{
+    backgroundColor:'#0E4385',
+    borderRadius:'50%',
+    padding:'5px',
   },
-  workingTimeSection: {
-    marginBottom: '20px',
+  card: {
+    backgroundColor: '#0E4385',
+    borderRadius: 10,
+    padding: 16,
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  image: {
+    width: 80,
+    height: 80,
+    borderRadius: 10,
+  },
+  infoContainer: {
+    marginLeft: 16,
+  },
+  name: {
+    fontSize: 20,
+    color: 'white',
+    fontWeight: 'bold',
+  },
+  location: {
+    color: 'white',
+    fontSize: 20,
+    marginTop: 5,
+  },
+  aboutContainer: {
+    marginTop: 20,
+  },
+  aboutTitle: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    marginBottom: 10,
+  },
+  aboutText: {
+    fontSize: 16,
+    lineHeight: 22,
+  },
+  link: {
+    color: '#0a74da',
+    textDecorationLine: 'underline',
   },
   callButton: {
-    display: 'flex',
+    backgroundColor: '#0E4385',
+    padding: 15,
+    borderRadius: 10,
     alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: '#0000FF', // Changed from green to blue
-    color: '#FFFFFF',
-    padding: '10px 20px',
-    fontSize: '16px',
-    border: 'none',
-    borderRadius: '5px',
-    cursor: 'pointer',
+    marginTop: 20,
   },
-};
+  callButtonText: {
+    color: 'white',
+    fontSize: 18,
+    fontWeight: 'bold',
+  },
+});
 
-export default DoctorDetails;
+export default DoctorDetailsScreen;
