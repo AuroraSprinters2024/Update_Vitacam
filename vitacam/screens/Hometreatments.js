@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { View, Text, StyleSheet, Image, TouchableOpacity, FlatList } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons'; // Make sure you have this library installed
 import Footer from './Footer';
+import { BrowserRouter as Router, Route, Routes, useNavigate } from 'react-router-dom';
+
 
 const HomeTreatmentScreen = () => {
   const [selectedIndex, setSelectedIndex] = useState(null);
@@ -22,6 +24,20 @@ const HomeTreatmentScreen = () => {
     { id: 5, title: 'Vitamin E', options: ['Almonds', 'Sunflower Seeds', 'Spinach'] },
     { id: 6, title: 'Zinc', options: ['Meat', 'Shellfish', 'Legumes'] },
   ];
+
+
+// Component to display the list of options
+const VitaminList = () => {
+  const navigate = useNavigate();
+
+  const handleOptionClick = (option) => {
+    if (option === 'Carrot') {
+      // Navigate to the Carrot detail page
+      navigate('singlehome');
+    }
+  };
+
+}
 
   return (
     <View style={styles.container}>
@@ -144,5 +160,6 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 20,
   },
 });
+
 
 export default HomeTreatmentScreen;   

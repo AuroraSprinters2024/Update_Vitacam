@@ -13,6 +13,7 @@ import PreQuestionsPage from './screens/Prequestions';
 import HelpdeskScreen from './screens/Helpdesk';
 import AIhelpscreen from './screens/A_help';
 import Doctor from "./screens/Doc_1";
+import SingleHomeTreatment from "./screens/SingleHomeTreatment"
 import DoctorDetails from "./screens/Doc_2";
 
 
@@ -38,6 +39,7 @@ export default function App() {
         <Stack.Screen name='A_help' component={AIhelpscreen}/>
         <Stack.Screen name='Doc_1' component={Doctor}/>
         <Stack.Screen name='Doc_2' component={DoctorDetails}/>
+        <Stack.Screen name='singlehome' component={SingleHomeTreatment}/>
       </Stack.Navigator>
     </NavigationContainer>
   );
